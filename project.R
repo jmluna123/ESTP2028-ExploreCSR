@@ -81,3 +81,8 @@ ry <- function(n) rnorm(n, mean = mean(data_pbc_e$valor), sd = sd(data_pbc_e$val
 
 sim.ssize.wilcox.test(data_pbc_s$valor, step.size = 2, iter = 10000, type="paired")
 
+
+summary(data[(data$variable == "SN" & data$modo == "ia" & data$periodo == "start"),])
+summary(data[(data$variable == "SN" & data$modo == "ia" & data$periodo == "end"),])
+
+

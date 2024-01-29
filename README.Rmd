@@ -166,7 +166,7 @@ group_by(data_general, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -180,7 +180,7 @@ group_by(data_inv, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -195,7 +195,7 @@ group_by(data_ia, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -211,7 +211,7 @@ group_by(data_general, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE, , conf.int = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -225,7 +225,7 @@ group_by(data_inv, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -240,7 +240,7 @@ group_by(data_ia, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -256,7 +256,7 @@ group_by(data_general, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -270,7 +270,7 @@ group_by(data_inv, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -285,7 +285,7 @@ group_by(data_ia, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -301,7 +301,7 @@ group_by(data_general, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_general, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -315,7 +315,7 @@ group_by(data_inv, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_inv, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
@@ -329,13 +329,16 @@ group_by(data_ia, periodo) %>%
     IQR = IQR(valor, na.rm = TRUE)
   )
 
-res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE)
+res <- wilcox.test(valor ~ periodo, data = data_ia, paired = TRUE, conf.int = TRUE)
 print(res)
 ```
 
 ## Poder Estadístico
 
 ```{r}
+data_pbc_s = data[(data$variable == "PBC" & data$modo == "ia" & data$periodo == "start"),]
+data_pbc_e = data[(data$variable == "PBC" & data$modo == "ia" & data$periodo == "end"),]
+
 rx <- function(n) rnorm(n, mean = mean(data_pbc_s$valor), sd = sd(data_pbc_s$valor)) 
 ry <- function(n) rnorm(n, mean = mean(data_pbc_e$valor), sd = sd(data_pbc_e$valor))  
 
